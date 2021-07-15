@@ -17,8 +17,21 @@ namespace PracticeDemosJuly2021.RomanNumeralConversion
         public string Numerals(int num)
         {
             string result = string.Empty;
+            //max number range is 3999
+            if (IsValidNumeralNumber(num))
+            {
+                //process numeral digits
+            }
+            else
+            {
+                result = "The number entered cannot be expressed as a roman numeral";
+            }
             // 
             return result;
+        }
+        private bool IsValidNumeralNumber(int num)
+        {
+            return num > 0 && num < 4000; 
         }
 
     }
