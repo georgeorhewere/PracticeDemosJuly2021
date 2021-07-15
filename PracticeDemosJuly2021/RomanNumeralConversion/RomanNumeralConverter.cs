@@ -14,31 +14,32 @@ namespace PracticeDemosJuly2021.RomanNumeralConversion
             romanNumeralLookup = new RomanNumeralLookup();
         }
 
-        public string Numerals(int num)
+        public string Numerals(int number)
         {
             string result = string.Empty;
             //max number range is 3999
-            if (IsValidNumeralNumber(num))
+            if (IsValidRomanNumeralNumber(number))
             {
                 //process numeral digits
-                string numSequence = num.ToString();
-                int numLength = numSequence.Length;
-                foreach(var n in numSequence)
-                {
-                    // Console.WriteLine($" {n} {numLength}");
-                    int currentNumPlace = Convert.ToInt32(n.ToString());
-                    result += ProcessNumberSequenceItem(currentNumPlace, numLength);                    
-                    numLength--;
+                string numSequence = number.ToString();
+                int numPosition = numSequence.Length;
+                
+                //process each num from left to right
+                foreach(var num in numSequence)
+                {                    
+                    int currentNumToProcess = Convert.ToInt32(num.ToString());
+                    result += ProcessNumberSequenceItem(currentNumToProcess, numPosition);
+                    numPosition--;
                 }
             }
             else
             {
-                result = "The number entered cannot be expressed as a roman numeral";
+                result = "The number entered cannot be expressed as a roman numeral - max range is 3999";
             }
             // 
-            return $"{ num } => {result}";
+            return $"{ number } => {result}";
         }
-        private bool IsValidNumeralNumber(int num)
+        private bool IsValidRomanNumeralNumber(int num)
         {
             return num > 0 && num < 4000; 
         }
@@ -48,11 +49,11 @@ namespace PracticeDemosJuly2021.RomanNumeralConversion
             return string.Join("", Enumerable.Repeat(romanNumeralLookup.GetRomanNumeral(key), count));
         }
 
-        private string ProcessNumberSequenceItem(int num, int pos)
+        private string ProcessNumberSequenceItem(int num, int position)
         {
             if (num < 4)
             {
-                switch (pos)
+                switch (position)
                 {
                     case 1:
                         return GetRepeatedSequence(1, num);                        
@@ -60,6 +61,8 @@ namespace PracticeDemosJuly2021.RomanNumeralConversion
                         return GetRepeatedSequence(10, num);
                     case 3:
                         return GetRepeatedSequence(100, num);
+                    case 4:
+                        return GetRepeatedSequence(1000, num);
                     default:
                         return string.Empty;
                 }
@@ -67,14 +70,14 @@ namespace PracticeDemosJuly2021.RomanNumeralConversion
             }
             else if (num == 4)
             {
-                switch (pos)
+                switch (position)
                 {
                     case 1:
-                        return romanNumeralLookup.GetRomanNumeral(1) + romanNumeralLookup.GetRomanNumeral(5);
+                        return $"{romanNumeralLookup.GetRomanNumeral(1)}{ romanNumeralLookup.GetRomanNumeral(5) }";
                     case 2:
-                        return romanNumeralLookup.GetRomanNumeral(10) + romanNumeralLookup.GetRomanNumeral(50);
+                        return $"{ romanNumeralLookup.GetRomanNumeral(10)}{ romanNumeralLookup.GetRomanNumeral(50)}";
                     case 3:
-                        return romanNumeralLookup.GetRomanNumeral(100) + romanNumeralLookup.GetRomanNumeral(500);
+                        return $"{ romanNumeralLookup.GetRomanNumeral(100)} {romanNumeralLookup.GetRomanNumeral(500)}";
                     default:
                         return string.Empty;
                 }
@@ -82,7 +85,7 @@ namespace PracticeDemosJuly2021.RomanNumeralConversion
             }
             else if (num == 5)
             {
-                switch (pos)
+                switch (position)
                 {
                     case 1:
                         return romanNumeralLookup.GetRomanNumeral(5);
@@ -97,28 +100,28 @@ namespace PracticeDemosJuly2021.RomanNumeralConversion
             }
             else if (num > 5 && num < 9)
             {
-                switch (pos)
+                switch (position)
                 {
                     case 1:
-                        return romanNumeralLookup.GetRomanNumeral(5) + GetRepeatedSequence(1, num - 5);
+                        return $"{ romanNumeralLookup.GetRomanNumeral(5)}{ GetRepeatedSequence(1, num - 5)}";
                     case 2:
-                        return romanNumeralLookup.GetRomanNumeral(50) + GetRepeatedSequence(10, num - 5); ;
+                        return $"{ romanNumeralLookup.GetRomanNumeral(50) }{ GetRepeatedSequence(10, num - 5)}" ;
                     case 3:
-                        return romanNumeralLookup.GetRomanNumeral(500) + GetRepeatedSequence(100, num - 5); ;
+                        return $"{ romanNumeralLookup.GetRomanNumeral(500) }{ GetRepeatedSequence(100, num - 5)}"; 
                     default:
                         return string.Empty;
                 }                
             }
             else if (num == 9)
             {
-                switch (pos)
+                switch (position)
                 {
                     case 1:
-                        return romanNumeralLookup.GetRomanNumeral(1) + romanNumeralLookup.GetRomanNumeral(10);
+                        return $"{ romanNumeralLookup.GetRomanNumeral(1) }{ romanNumeralLookup.GetRomanNumeral(10)}";
                     case 2:
-                        return romanNumeralLookup.GetRomanNumeral(10) + romanNumeralLookup.GetRomanNumeral(100);
+                        return $"{ romanNumeralLookup.GetRomanNumeral(10) }{ romanNumeralLookup.GetRomanNumeral(100)}";
                     case 3:
-                        return romanNumeralLookup.GetRomanNumeral(100) + romanNumeralLookup.GetRomanNumeral(1000);
+                        return $"{ romanNumeralLookup.GetRomanNumeral(100) }{ romanNumeralLookup.GetRomanNumeral(1000)}";
                     default:
                         return string.Empty;
                 }                
