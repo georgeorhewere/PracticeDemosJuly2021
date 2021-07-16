@@ -9,7 +9,18 @@ namespace PracticeDemosJuly2021
         static void Main(string[] args)
         {
             Console.WriteLine("Pratice tests");
-            convertToRomanNumeral();
+            // convertToRomanNumeral();
+            ConvertRomanToNumber();
+
+
+        }
+
+        static void ConvertRomanToNumber()
+        {
+            NumberRomanConverter romanConverter = new NumberRomanConverter();
+            romanConverter.Decode("XXI");
+            romanConverter.Decode("MDCLXVI");
+            romanConverter.Decode("MMVIII");
         }
 
         static void convertToRomanNumeral()
@@ -17,9 +28,9 @@ namespace PracticeDemosJuly2021
             Console.WriteLine("Convert to Roman Symbols");
             RomanNumeralConverter converter = new RomanNumeralConverter();
             //Console.WriteLine($"result -: {converter.Numerals(5000)}");
-            Console.WriteLine($"result -: {converter.Numerals(1)}");
-            Console.WriteLine($"result -: {converter.Numerals(1666)}");
-            Console.WriteLine($"result -: {converter.Numerals(2008)}");
+            // Console.WriteLine($"result -: {converter.Numerals(1)}");
+            // Console.WriteLine($"result -: {converter.Numerals(1666)}");
+            // Console.WriteLine($"result -: {converter.Numerals(2008)}");
             Console.WriteLine($"result -: {converter.Numerals(1990)}");
             Console.WriteLine($"result -: {converter.Numerals(1000)}");
             Console.WriteLine($"result -: {converter.Numerals(3999)}");

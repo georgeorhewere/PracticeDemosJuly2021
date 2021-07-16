@@ -88,11 +88,11 @@ namespace PracticeDemosJuly2021.RomanNumeralConversion
                 switch (position)
                 {
                     case 1:
-                        return romanNumeralLookup.GetRomanNumeral(5);
+                        return $"{romanNumeralLookup.GetRomanNumeral(5)}";
                     case 2:
-                        return romanNumeralLookup.GetRomanNumeral(50);
+                        return $"{romanNumeralLookup.GetRomanNumeral(50)}";
                     case 3:
-                        return romanNumeralLookup.GetRomanNumeral(500);
+                        return $"{romanNumeralLookup.GetRomanNumeral(500)}";
                     default:
                         return string.Empty;
                 }
@@ -134,25 +134,5 @@ namespace PracticeDemosJuly2021.RomanNumeralConversion
 
     }
 
-    internal class RomanNumeralLookup
-    {
-        Dictionary<int, string> numeralLookup;
-        public RomanNumeralLookup()
-        {
-            numeralLookup = new Dictionary<int, string>()
-            {
-                { 1,"I" },
-                { 5,"V" },
-                { 10,"X" },
-                { 50,"L" },
-                { 100,"C" },
-                { 500,"D" },
-                { 1000,"M" },
-            };
-        }
-
-        public string GetRomanNumeral(int key) {
-            return numeralLookup.GetValueOrDefault(key);
-        }
-    }
+   
 }
