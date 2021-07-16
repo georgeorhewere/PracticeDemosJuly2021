@@ -23,13 +23,19 @@ namespace PracticeDemosJuly2021.RomanNumeralConversion
             {
                 var num = romanNumeralLookup.GetNumberKey(roman[x]);
                 
-                if (previousNum != 0 && previousNum < num)
+
+                if (previousNum != 0 && previousNum > num)
                 {
-                    num = num - previousNum;
+                    result -= previousNum;
+                    num = previousNum - num;
+                }
+                else
+                {
+                    previousNum = num;
                 }
 
                 result += num;
-                previousNum = num;
+                
 
             }
             Console.WriteLine($"{roman}  => {result}");

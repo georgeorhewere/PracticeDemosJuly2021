@@ -9,7 +9,7 @@ namespace PracticeDemosJuly2021
         static void Main(string[] args)
         {
             Console.WriteLine("Pratice tests");
-            // convertToRomanNumeral();
+            convertToRomanNumeral();
             ConvertRomanToNumber();
 
 
@@ -19,8 +19,10 @@ namespace PracticeDemosJuly2021
         {
             NumberRomanConverter romanConverter = new NumberRomanConverter();
             romanConverter.Decode("XXI");
-            romanConverter.Decode("MDCLXVI");
+            romanConverter.Decode("MMMCMXCIX");
             romanConverter.Decode("MMVIII");
+            romanConverter.Decode("MCMXC");
+            romanConverter.Decode("XXIV");
         }
 
         static void convertToRomanNumeral()
@@ -32,10 +34,10 @@ namespace PracticeDemosJuly2021
             // Console.WriteLine($"result -: {converter.Numerals(1666)}");
             // Console.WriteLine($"result -: {converter.Numerals(2008)}");
             Console.WriteLine($"result -: {converter.Numerals(1990)}");
-            Console.WriteLine($"result -: {converter.Numerals(1000)}");
+            // Console.WriteLine($"result -: {converter.Numerals(1000)}");
             Console.WriteLine($"result -: {converter.Numerals(3999)}");
-            Console.WriteLine($"result -: {converter.Numerals(3000)}");
-            Console.WriteLine($"result -: {converter.Numerals(788)}");
+            // Console.WriteLine($"result -: {converter.Numerals(3000)}");
+            // Console.WriteLine($"result -: {converter.Numerals(788)}");
             Console.WriteLine($"result -: {converter.Numerals(59)}");
             Console.WriteLine($"result -: {converter.Numerals(24)}");
             Console.ReadKey();
